@@ -1,1 +1,70 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JARVIS AI</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#020817;color:#00d9ff;
+ font-family:Arial,sans-serif;text-align:center;
+ min-height:100vh;padding:25px 15px;
+}
+h1{letter-spacing:5px;margin-top:35px}
+p{color:#8bbdce}
+.core{
+ width:170px;height:170px;border-radius:50%;
+ border:3px solid #00d9ff;
+ margin:45px auto;display:grid;place-items:center;
+ box-shadow:0 0 25px #00d9ff, inset 0 0 25px #00d9ff;
+ animation:pulse 2s infinite;
+ font-size:45px;
+}
+@keyframes pulse{
+ 50%{box-shadow:0 0 55px #00d9ff,inset 0 0 35px #00d9ff}
+}
+input{
+ width:100%;padding:16px;border-radius:12px;
+ background:#071a2e;border:1px solid #00d9ff;
+ color:white;font-size:16px;
+}
+button{
+ padding:13px 20px;margin:8px;
+ background:#00bce8;color:#00101a;
+ border:0;border-radius:10px;font-weight:bold;
+}
+#reply{margin:25px auto;padding:15px;max-width:500px;
+ color:white;min-height:70px}
+</style>
+</head>
+<body>
+<h1>J.A.R.V.I.S</h1>
+<p>JUST A RATHER VERY INTELLIGENT SYSTEM</p>
+<div class="core">J</div>
+<h3>JARVIS ONLINE</h3>
+<p>PERSONAL AI ASSISTANT</p>
+<input id="question" placeholder="Ask me anything...">
+<br>
+<button onclick="ask()">SEND</button>
+<button onclick="speak()">SPEAK</button>
+<div id="reply">Boss, I am listening.</div>
+<script>
+function ask(){
+ let q=document.getElementById("question").value;
+ let r=document.getElementById("reply");
+ if(!q.trim())return;
+ let answer="Boss, I received your message: "+q;
+ r.innerText=answer;
+}
+function speak(){
+ let text=document.getElementById("reply").innerText;
+ let voice=new SpeechSynthesisUtterance(text);
+ voice.lang="en-US";
+ speechSynthesis.speak(voice);
+}
+</script>
+</body>
+</html>
